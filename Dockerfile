@@ -11,13 +11,14 @@ ENV PVPN_USERNAME= \
     PVPN_PASSWORD_FILE= \
     PVPN_TIER=2 \
     PVPN_PROTOCOL=udp \
-    PVPN_CMD_ARGS="connect --fastest" \
+    PVPN_CMD_ARGS="connect --cc US" \
     PVPN_DEBUG= \
     HOST_NETWORK= \
     DNS_SERVERS_OVERRIDE=
 
 COPY app /app
 COPY pvpn-cli /root/.pvpn-cli
+COPY connect.ovpn /root/.pvpn-cli/connect.ovpn
 
 RUN apk --update add coreutils openvpn privoxy procps python3 runit \
     && python3 -m ensurepip \
